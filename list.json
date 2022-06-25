@@ -18,5 +18,10 @@
         "name" : "Mike",
         "guests" : 1,
         "status" : true
+    },
+    {
+        "name" : "Simon",
+        "guests" : 1,
+        "status" : true
     }
 ]
