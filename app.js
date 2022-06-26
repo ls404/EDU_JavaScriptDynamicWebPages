@@ -23,14 +23,15 @@ window.addEventListener("DOMContentLoaded", (event) => {
 });
 
 function maker() {
-  output.textContent = "";
-  myList.forEach((el) => {
+  output.innerHTML = "";
+  console.log(typeof myList);
+  myList.forEach((el, index) => {
     // console.log(el);
-    makeList(el);
+    makeList(el, index);
   });
 }
 
-function makeList(item) {
+function makeList(item, index) {
   const div = document.createElement("div");
   div.innerHTML = `${item.name}   -   #(${item.guests})`;
   output.append(div);
@@ -39,4 +40,13 @@ function makeList(item) {
   } else {
     div.classList.add("notConfirmed");
   }
+  div.addEventListener("click", (e) => {
+    div.classList.toggle("confirmed");
+    div.classList.toggle("notConfirmed");
+    if (div.classList.contains("confirmed")) {
+      myList[index].status = false;
+    } else {
+      myList[index].status = true;
+    }
+  });
 }
