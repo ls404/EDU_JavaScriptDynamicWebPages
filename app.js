@@ -2,19 +2,22 @@ const output = document.querySelector('.output');
 console.log(output);
 
 const url = 'list.json';
+let myList = [];
 
 window.addEventListener('DOMContentLoaded', (event) => {
     console.log('DOM fully loaded and parsed');
     output.textContent = "Loading..."
     fetch(url).then(rep=>rep.json())
     .then((data) => {
-        console.log(data);
+        myList = data;
         output.textContent = ""
-        data.forEach(el => {
+        myList.forEach(el => {
             console.log(el);
             makeList(el);
         });
     })
+    console.log(myList);
+    console.log('-----------');
 });
 
 function makeList(item) {
